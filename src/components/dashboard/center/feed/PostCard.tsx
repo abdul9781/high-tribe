@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import { apiFormDataWrapper, apiRequest } from "@/lib/api";
 import MediaModal from "@/components/global/MediaModal";
 import JourneyMapModal from "./JourneyMapModal";
+import ShareModal from "./ShareModal";
 import {
   Post,
   PostUser as User,
@@ -414,6 +415,9 @@ export const PostCard = ({
   // Journey map modal state
   const [isJourneyMapModalOpen, setIsJourneyMapModalOpen] = useState(false);
 
+  // Share modal state
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
   // Comment state
   const [commentContent, setCommentContent] = useState("");
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
@@ -480,6 +484,15 @@ export const PostCard = ({
 
   const handleJourneyMapModalClose = () => {
     setIsJourneyMapModalOpen(false);
+  };
+
+  // Handle share modal
+  const handleShareModalOpen = () => {
+    setIsShareModalOpen(true);
+  };
+
+  const handleShareModalClose = () => {
+    setIsShareModalOpen(false);
   };
 
   // Handle media index change in modal
@@ -960,7 +973,20 @@ export const PostCard = ({
               >
                 {comments.length} Comments {showComments ? "(Hide)" : "(Show)"}
               </button>
-              <span className="text-sm text-[#656565]">0 Share</span>
+
+                {/* <button 
+          onClick={openModal}
+          className="flex items-center gap-2 text-sm text-[#656565] hover:text-blue-600 transition-colors"
+        >
+          <Share2 size={16} />
+          {shareCount} Share
+        </button> */}
+              <button 
+                onClick={handleShareModalOpen}
+                className="text-sm text-[#656565] hover:text-blue-600 transition-colors cursor-pointer"
+              >
+                0 Share
+              </button>
             </div>
           </div>
 
@@ -1110,6 +1136,13 @@ export const PostCard = ({
           post={post}
         />
       )}
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={handleShareModalClose}
+        post={post}
+      />
     </div>
   );
 };
