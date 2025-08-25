@@ -6,7 +6,7 @@ import { Share2, X, MessageCircle, Copy, Users, UserPlus, Lock } from 'lucide-re
 interface ShareModalProps {
   isOpen: boolean;
   onClose: () => void;
-  post: any; // You can replace 'any' with your Post type
+  post: any; 
 }
 
 const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, post }) => {
@@ -15,8 +15,6 @@ const ShareModal: React.FC<ShareModalProps> = ({ isOpen, onClose, post }) => {
   const [message, setMessage] = useState('');
 
   if (!isOpen) return null;
-
-  // Sample user data - aap yahan apna data dal sakte hain
   const users = [
     { id: 1, name: 'Ahmed Ali', avatar: 'https://randomuser.me/api/portraits/women/68.jpg ', isOnline: true },
     { id: 2, name: 'Sara Khan', avatar: 'https://randomuser.me/api/portraits/men/68.jpg', isOnline: false },

@@ -985,7 +985,7 @@ export const PostCard = ({
                 onClick={handleShareModalOpen}
                 className="text-sm text-[#656565] hover:text-blue-600 transition-colors cursor-pointer"
               >
-                0 Share
+                0 Share 
               </button>
             </div>
           </div>
